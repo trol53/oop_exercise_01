@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -22,7 +23,16 @@ private:
      house = name3;
      apartment = name4;
    }
-   bool operator ==(Address &a, Adress &b){
-     return a.city == b.city && a.street == b.street && a.house == b.house && a.apartment == b.apartment;
+   bool operator ==(Address a){
+       transform(a.city.begin(), a.city.end(), a.city.begin(), tolower);
+       transform(this->city.begin(), this->city.end(), this->city.begin(), tolower);
+       return a.city == this->city && a.street == this->street && a.house == this->house && a.apartment == this->apartment;
    }
+   //bool
 };
+
+int main(){
+  Address *a = new Address();
+  Address *b = new Address("MoscoW", "Lenina", 10, 10);
+  cout << (*a == *b);
+}
