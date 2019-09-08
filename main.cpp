@@ -24,8 +24,11 @@ private:
      house = name3;
      apartment = name4;
    }
-   void Set(){
-     cin >> city >> street >> house >> apartment;
+   void Set(string s1, string s2, int a1, int a2){
+     city = s1;
+     street = s2;
+     house = a1;
+     apartment = a2;
    }
    bool operator ==(Address a){
        transform(a.city.begin(), a.city.end(), a.city.begin(), (int (*)(int))tolower);
@@ -44,13 +47,13 @@ private:
      transform(this->street.begin(), this->street.end(), this->street.begin(), (int (*)(int))tolower);
      return this->street == stree;
    }
-   bool is_neighbour(Address b){
+   bool is_neighbour(Address a){
      transform(a.city.begin(), a.city.end(), a.city.begin(), (int (*)(int))tolower);
      transform(this->city.begin(), this->city.end(), this->city.begin(), (int (*)(int))tolower);
      transform(a.street.begin(), a.street.end(), a.street.begin(), (int (*)(int))tolower);
      transform(this->street.begin(), this->street.end(), this->street.begin(), (int (*)(int))tolower);
-     if (b.city == this->city && b.street == this->street){
-       if (abs(b.house - this->house) == 1){
+     if (a.city == this->city && a.street == this->street){
+       if (abs(a.house - this->house) == 1){
          return true;
        }
      }
@@ -59,8 +62,79 @@ private:
 };
 
 int main(){
-  // Address *a = new Address();
-  // Address *b = new Address("MoscoW", "Lenina", 10, 15);
+  Address *a = new Address();
+  Address *b = new Address();
+  int item = 1;
+  string name1,name2,town,stree;
+  int adress;
+  int name3,name4;
+  cout << "1 - input address 1\n2 - input address 2\n3 - compare addresses\n4 - this address locate in this city\n5 - this address locate on this street\n6 - are this addresses neighbour\n0 - exit\n";
+  while (item != 0){
+    cin >> item;
+    switch (item) {
+      case 1:
+      cout << "Enter Address 1\n";
+      cin >> name1 >> name2 >> name3 >> name4;
+      a->Set(name1, name2, name3, name4);
+      break;
+      case 2:
+      cout << "Enter Address 2\n";
+      cin >> name1 >> name2 >> name3 >> name4;
+      b->Set(name1, name2, name3, name4);
+      break;
+      case 3:
+      if (a == b)
+        cout << "equal\n";
+      else
+        cout << "not equal\n";
+      break;
+      case 4:
+      cout << "enter city and number address\n";
+      cin >> town >> adress;
+      if (adress == 1){
+        if (a->is_city(town))
+          cout << "this address locate in " << town << '\n';
+        else
+          cout << "this addess not locate in " << town << '\n';
+        break;
+      }
+      if (adress == 2){
+        if (b->is_city(town))
+          cout << "this address locate in " << town << '\n';
+        else
+          cout << "this addess not locate in " << town << '\n';
+        break;
+      }
+      cout << "this number not exist\n";
+      break;
+      case 5:
+      cout << "enter sreet and number address\n";
+      cin >> stree >> adress;
+      if (adress == 1){
+        if (a->is_street(stree))
+          cout << "this address locate in " << stree << '\n';
+        else
+          cout << "this addess not locate in " << stree << '\n';
+        break;
+      }
+      if (adress == 2){
+        if (a->is_street(stree))
+          cout << "this address locate in " << stree << '\n';
+        else
+          cout << "this addess not locate in " << stree << '\n';
+        break;
+      }
+      cout << "this number not exist\n";
+      break;
+      case 6:
+      if (a->is_neighbour(*b)){
+        cout << "this addresses are neighbour\n";
+      }else
+        cout << "this addresses are not neighbour\n";
+      break;
+    }
+    cout << "1 - input address 1\n2 - input address 2\n3 - compare addresses\n4 - this address locate in this city\n5 - this address locate on this street\n6 - are this addresses neighbour\n0 - exit\n";
+  }
   // a->Set();
   // b->Set();
   // cout << (*a == *b);
@@ -71,5 +145,5 @@ int main(){
   // cout << "Enter city\n";
   // cin >> town;
   // cout << a->is_city(town);
-  
+
 }
