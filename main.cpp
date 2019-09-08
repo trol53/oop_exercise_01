@@ -135,15 +135,4 @@ int main(){
     }
     cout << "1 - input address 1\n2 - input address 2\n3 - compare addresses\n4 - this address locate in this city\n5 - this address locate on this street\n6 - are this addresses neighbour\n0 - exit\n";
   }
-  // a->Set();
-  // b->Set();
-  // cout << (*a == *b);
-  // string town,stree;
-  // cout << "Enter street\n";
-  // cin >> stree;
-  // cout << a->is_street(stree);
-  // cout << "Enter city\n";
-  // cin >> town;
-  // cout << a->is_city(town);
-
 }
