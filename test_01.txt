@@ -1,0 +1,11 @@
+1
+MoscoW lenina 10 11
+2
+MOScow leninA 10 11
+3
+4
+Leningrad 1
+5
+lenina 2
+6
+0
