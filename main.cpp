@@ -1,3 +1,9 @@
+// Лабораторная работа №1 Савров Никита М80-207Б-18
+// Создать класс Address для работы с адресами домов. Адрес должен состоять из строк с названием города и
+// улицы и чисел с номером дома и квартиры. Реализовать операции сравнения адресов, а также операции
+// проверки принадлежности адреса к улице и городу. В операциях не должен учитываться регистр строки. Так
+// же необходимо сделать операцию, которая возвращает истину если два адреса находятся по соседству (на
+// одной улице в одном городе и дома стоят подряд).
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -17,12 +23,6 @@ private:
      street = "Lenina";
      house = 10;
      apartment = 10;
-   }
-   Address(string name1, string name2, int name3, int name4){
-     city = name1;
-     street = name2;
-     house = name3;
-     apartment = name4;
    }
    void Set(string s1, string s2, int a1, int a2){
      city = s1;
@@ -83,7 +83,7 @@ int main(){
       b->Set(name1, name2, name3, name4);
       break;
       case 3:
-      if (a == b)
+      if (*a == *b)
         cout << "equal\n";
       else
         cout << "not equal\n";
@@ -95,14 +95,14 @@ int main(){
         if (a->is_city(town))
           cout << "this address locate in " << town << '\n';
         else
-          cout << "this addess not locate in " << town << '\n';
+          cout << "this address not locate in " << town << '\n';
         break;
       }
       if (adress == 2){
         if (b->is_city(town))
           cout << "this address locate in " << town << '\n';
         else
-          cout << "this addess not locate in " << town << '\n';
+          cout << "this address not locate in " << town << '\n';
         break;
       }
       cout << "this number not exist\n";
@@ -114,14 +114,14 @@ int main(){
         if (a->is_street(stree))
           cout << "this address locate in " << stree << '\n';
         else
-          cout << "this addess not locate in " << stree << '\n';
+          cout << "this address not locate in " << stree << '\n';
         break;
       }
       if (adress == 2){
         if (a->is_street(stree))
           cout << "this address locate in " << stree << '\n';
         else
-          cout << "this addess not locate in " << stree << '\n';
+          cout << "this address not locate in " << stree << '\n';
         break;
       }
       cout << "this number not exist\n";
@@ -135,4 +135,6 @@ int main(){
     }
     cout << "1 - input address 1\n2 - input address 2\n3 - compare addresses\n4 - this address locate in this city\n5 - this address locate on this street\n6 - are this addresses neighbour\n0 - exit\n";
   }
+  delete(a);
+  delete(b);
 }
