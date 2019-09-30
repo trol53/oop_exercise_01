@@ -1,0 +1,11 @@
+1
+MOScow lenina 10 11
+2
+Leningrad mira 11 12
+3
+4
+Moscow 1
+5
+lenina 2
+6
+0
