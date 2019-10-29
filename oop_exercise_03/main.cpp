@@ -68,6 +68,14 @@ class Rectangle : public Figure  {
             return false;
         return true;
     }
+    friend istream& operator>>(istream& in, Rectangle &a){
+        vector <pair <double, double>> v(4);
+        for (int i = 0; i < 4; i++){
+            in >> v[i].first >> v[i].second;
+        }
+        a.Set(v);
+        return in;
+    }
 };
 
 class Rhomb : public Figure {
@@ -123,6 +131,14 @@ class Rhomb : public Figure {
             return false;
         return true;
     }
+    friend istream& operator>>(istream& in, Rhomb &a){
+        vector <pair <double, double>> v(4);
+        for (int i = 0; i < 4; i++){
+            in >> v[i].first >> v[i].second;
+        }
+        a.Set(v);
+        return in;
+    }
 };
 
 class Trapeze : public Figure {
@@ -174,6 +190,14 @@ class Trapeze : public Figure {
             return true;
         return false;
     }
+    friend istream& operator>>(istream& in, Trapeze &a){
+        vector <pair <double, double>> v(4);
+        for (int i = 0; i < 4; i++){
+            in >> v[i].first >> v[i].second;
+        }
+        a.Set(v);
+        return in;
+    }
 };
 
 int main(){
@@ -183,6 +207,9 @@ int main(){
     vector <pair <double, double>> v1(4);
     double sum;
     char menu = '0';
+    Rectangle tmp_r;
+    Rhomb tmp_rh;
+    Trapeze tmp_t;
     while (menu != '9'){
         cout << "1 - enter rectangle\n2 - enter rhomb\n3 - enter trapeze\n4 - square for all figure\n5 - geomcenter for all figure\n6 - print all figure\n7 - all square\n8 - erase figure\n9 - exit\n";
         cin >> menu;
@@ -192,11 +219,8 @@ int main(){
             if (f.size() <= f_size)
                 f.resize(2 * f_size);
             cout << "input cordinats\n";
-            for (int i = 0; i < 4; i++){
-                cin >> v1[i].first >> v1[i].second;
-            }
-            f[f_size] = new Rectangle();
-            f[f_size]->Set(v1);
+            cin >> tmp_r;
+            f[f_size] = new Rectangle(tmp_r);
             if (f[f_size]->IsFigure()){
                 f_size++;
             }else{
@@ -210,11 +234,8 @@ int main(){
             if (f.size() <= f_size){
                 f.resize(2 * f_size);
             }
-            for (int i = 0; i < 4; i++){
-                cin >> v1[i].first >> v1[i].second;
-            }
-            f[f_size] = new Rhomb();
-            f[f_size]->Set(v1);
+            cin >> tmp_rh;
+            f[f_size] = new Rhomb(tmp_rh);
             if (f[f_size]->IsFigure()){
                 f_size++;
             }else{
@@ -228,11 +249,8 @@ int main(){
             if (f.size() <= f_size){
                 f.resize(2 * f_size);
             }
-            for (int i = 0; i < 4; i++){
-                cin >> v1[i].first >> v1[i].second;
-            }
-            f[f_size] = new Trapeze();
-            f[f_size]->Set(v1);
+            cin >> tmp_t;
+            f[f_size] = new Trapeze(tmp_t);
             if (f[f_size]->IsFigure()){
                 f_size++;
             }else{
